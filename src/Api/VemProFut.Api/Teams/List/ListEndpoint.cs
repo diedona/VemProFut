@@ -1,24 +1,22 @@
-﻿
-
-using Carter;
+﻿using Carter;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace VemProFut.Api.Teams.List
 {
-    public class Endpoint : CarterModule
+    public class ListEndpoint : CarterModule
     {
-        private async Task<IResult> HandleAsync()
+        private Ok<IEnumerable<ListResponse>> HandleSync()
         {
-            await Task.CompletedTask;
-            return Results.Ok(new List<Response>()
+            return TypedResults.Ok(new List<ListResponse>()
             {
                 new(Guid.NewGuid(), "Embodied Goats"),
                 new(Guid.NewGuid(), "La'vrour Sevil")
-            });
+            }.AsEnumerable());
         }
 
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("api/teams", HandleAsync)
+            app.MapGet("api/teams", HandleSync)
                 .WithTags("teams")
                 .WithDescription("listing all the teams")
                 .WithOpenApi();

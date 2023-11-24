@@ -1,16 +1,17 @@
 ﻿using Carter;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace VemProFut.Api.Teams.Create
 {
-    public class Endpoint : CarterModule
+    public class CreateEndpoint : CarterModule
     {
-        private async Task<IResult> HandleAsync(
-            [FromBody] Request request
+        private async Task<Ok> HandleAsync(
+            [FromBody] CreateRequest request
         )
         {
             await Task.CompletedTask;
-            return Results.Ok();
+            return TypedResults.Ok();
         }
 
         public override void AddRoutes(IEndpointRouteBuilder app)
