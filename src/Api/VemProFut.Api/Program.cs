@@ -1,3 +1,4 @@
+using Carter;
 using VemProFut.Api.Teams.Create;
 using VemProFut.Api.Teams.List;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCarter();
 
 var app = builder.Build();
 
@@ -39,8 +41,7 @@ app.UseHttpsRedirection();
 //.WithName("GetWeatherForecast")
 //.WithOpenApi();
 
-app.MapTeamListEndpoint();
-app.MapTeamCreateEndpoint();
+app.MapCarter();
 
 app.Run();
 
