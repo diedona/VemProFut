@@ -1,4 +1,5 @@
 ﻿using Carter;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +8,12 @@ namespace VemProFut.Api.Teams.Create
     public class CreateEndpoint : CarterModule
     {
         private async Task<Ok> HandleAsync(
-            [FromBody] CreateRequest request
+            [FromBody] CreateRequest request,
+            [FromServices] ISender sender,
+            CancellationToken cancellationToken
         )
         {
-            await Task.CompletedTask;
+            await sender.Send(request, cancellationToken);
             return TypedResults.Ok();
         }
 

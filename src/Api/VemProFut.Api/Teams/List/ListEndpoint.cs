@@ -1,22 +1,24 @@
 ﻿using Carter;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 namespace VemProFut.Api.Teams.List
 {
     public class ListEndpoint : CarterModule
     {
-        private Ok<IEnumerable<ListResponse>> HandleSync()
+        private async Task<Ok<IEnumerable<ListResponse>>> HandleAsync(
+            [FromServices] ISender sender,
+            CancellationToken cancellationToken
+        )
         {
-            return TypedResults.Ok(new List<ListResponse>()
-            {
-                new(Guid.NewGuid(), "Embodied Goats"),
-                new(Guid.NewGuid(), "La'vrour Sevil")
-            }.AsEnumerable());
+            var response = await sender.Send(new ListRequest(), cancellationToken);
+            return TypedResults.Ok(response);
         }
 
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("api/teams", HandleSync)
+            app.MapGet("api/teams", HandleAsync)
                 .WithTags("teams")
                 .WithDescription("listing all the teams")
                 .WithOpenApi();

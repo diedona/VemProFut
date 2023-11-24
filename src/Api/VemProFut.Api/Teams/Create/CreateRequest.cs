@@ -1,4 +1,6 @@
-﻿namespace VemProFut.Api.Teams.Create
+﻿using MediatR;
+
+namespace VemProFut.Api.Teams.Create
 {
-    public record CreateRequest(string Name);
+    public record CreateRequest(string Name) : IRequest<Unit>;
 }
