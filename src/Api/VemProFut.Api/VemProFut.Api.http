@@ -1,0 +1,6 @@
+@VemProFut.Api_HostAddress = http://localhost:5265
+
+GET {{VemProFut.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
