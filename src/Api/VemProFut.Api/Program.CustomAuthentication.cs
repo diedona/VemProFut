@@ -1,13 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using VemProFut.Domain.Options;
 
 namespace VemProFut.Api
 {
     public static class ProgramCustomAuthentication
     {
-        public static void AddCustomAuthentication(this IServiceCollection services)
+        public static void AddCustomAuthentication(this IServiceCollection services, WebApplicationBuilder builder)
         {
+            var jwtConfigurationOption = builder.Configuration
+                .GetSection(JwtConfigurationOption.FieldName)
+                .Get<JwtConfigurationOption>();
+
+            ArgumentNullException.ThrowIfNull(jwtConfigurationOption, nameof(jwtConfigurationOption));
+
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -18,13 +25,15 @@ namespace VemProFut.Api
                 opt.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = "https://localhost:7111", //get from config
+                    ValidIssuer = jwtConfigurationOption.Issuer,
                     ValidateAudience = true,
-                    ValidAudience = "https://localhost:8080", //get from config
+                    ValidAudience = jwtConfigurationOption.Audience,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ClockSkew = TimeSpan.Zero,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("batata")) // todo: get key from appsettings
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtConfigurationOption.PrivateKey)
+                    )
                 };
             });
         }

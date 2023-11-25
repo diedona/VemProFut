@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using VemProFut.Domain.Entities;
 using VemProFut.Domain.Token;
 
 namespace VemProFut.Api.Logins.Login
@@ -12,7 +13,7 @@ namespace VemProFut.Api.Logins.Login
             CancellationToken cancellationToken
         )
         {
-            return new("fuck you");
+            return new(_tokenServive.GenerateToken(new UserEntity(request.Username, request.Password)));
         }
     }
 }

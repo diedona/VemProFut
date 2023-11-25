@@ -1,7 +1,9 @@
-﻿namespace VemProFut.Domain.Token
+﻿using VemProFut.Domain.Entities;
+
+namespace VemProFut.Domain.Token
 {
     public interface IJwtTokenService
     {
-        string GenerateToken();
+        string GenerateToken(UserEntity user);
     }
 }
