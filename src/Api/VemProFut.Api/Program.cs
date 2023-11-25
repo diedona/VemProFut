@@ -1,11 +1,17 @@
 using Carter;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using VemProFut.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddCustomServices();
+builder.Services.AddThirdPartyServices();
+builder.Services.AddDomainServices();
+builder.Services.AddCustomAuthentication();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -18,5 +24,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapCarter();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();

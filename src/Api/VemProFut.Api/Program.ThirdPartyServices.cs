@@ -2,9 +2,9 @@
 
 namespace VemProFut.Api
 {
-    public static class Program
+    public static class ProgramThirdPartyServices
     {
-        public static void AddCustomServices(this IServiceCollection services)
+        public static void AddThirdPartyServices(this IServiceCollection services)
         {
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
