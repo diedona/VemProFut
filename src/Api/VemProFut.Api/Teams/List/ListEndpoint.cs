@@ -19,6 +19,7 @@ namespace VemProFut.Api.Teams.List
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapGet("api/teams", HandleAsync)
+                .RequireAuthorization()
                 .WithTags("teams")
                 .WithDescription("listing all the teams")
                 .WithOpenApi();

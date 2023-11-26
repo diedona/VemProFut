@@ -22,6 +22,7 @@ namespace VemProFut.Api.Teams.Create
             app.MapPost("api/teams", HandleAsync)
                 .WithTags("teams")
                 .WithDescription("creates a teams")
+                .RequireAuthorization()
                 .WithOpenApi();
         }
     }
