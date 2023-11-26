@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using VemProFut.Domain.Authentication.Constants;
 
 namespace VemProFut.Api.Teams.Create
 {
@@ -22,7 +23,7 @@ namespace VemProFut.Api.Teams.Create
             app.MapPost("api/teams", HandleAsync)
                 .WithTags("teams")
                 .WithDescription("creates a teams")
-                .RequireAuthorization()
+                .RequireAuthorization(PoliciesConsts.WriterPolicyName)
                 .WithOpenApi();
         }
     }

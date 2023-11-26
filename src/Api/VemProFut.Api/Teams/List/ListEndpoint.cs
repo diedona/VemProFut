@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using VemProFut.Domain.Authentication.Constants;
 
 namespace VemProFut.Api.Teams.List
 {
@@ -19,7 +20,7 @@ namespace VemProFut.Api.Teams.List
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapGet("api/teams", HandleAsync)
-                .RequireAuthorization()
+                .RequireAuthorization(PoliciesConsts.ReaderPolicyName)
                 .WithTags("teams")
                 .WithDescription("listing all the teams")
                 .WithOpenApi();

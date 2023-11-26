@@ -11,7 +11,7 @@ builder.Services.AddCustomExceptionHandlers();
 builder.Services.AddCustomOptions(builder);
 builder.Services.AddDomainServices();
 builder.Services.AddCustomAuthentication(builder);
-builder.Services.AddAuthorization();
+builder.Services.AddCustomAuthorization();
 
 builder.Host.UseSerilog((context, configuration) => 
     configuration.ReadFrom.Configuration(context.Configuration));
