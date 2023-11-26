@@ -25,10 +25,24 @@ namespace VemProFut.Api
         {
             _logger.LogError(exception: exception, message: exception.ToString());
 
+            if(exception is UnauthorizedAccessException)
+            {
+                httpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                httpContext.Response.ContentType = "application/json";
+                httpContext.Response.WriteAsJsonAsync<GlobalErrorResponse>(
+                    new() { Message = "GTFO"}, 
+                    cancellationToken: cancellationToken
+                );
+
+                return new ValueTask<bool>(true);
+            }
+
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             httpContext.Response.ContentType = "application/json";
-            httpContext.Response.WriteAsJsonAsync<GlobalErrorResponse>(new(), cancellationToken: cancellationToken);
-
+            httpContext.Response.WriteAsJsonAsync<GlobalErrorResponse>(
+                new(),
+                cancellationToken: cancellationToken
+            );
             return new ValueTask<bool>(true);
         }
     }

@@ -1,6 +1,6 @@
 ﻿using VemProFut.Domain.Entities;
 
-namespace VemProFut.Domain.Token
+namespace VemProFut.Domain.Authentication.Token.Interfaces
 {
     public interface IJwtTokenService
     {

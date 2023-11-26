@@ -1,4 +1,4 @@
-﻿using VemProFut.Domain.Token;
+﻿using VemProFut.Domain.Authentication.Token.Interfaces;
 using VemProFut.Infra.Token;
 
 namespace VemProFut.Api

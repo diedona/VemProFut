@@ -3,9 +3,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using VemProFut.Domain.Authentication.Constants;
+using VemProFut.Domain.Authentication.Token.Interfaces;
 using VemProFut.Domain.Entities;
 using VemProFut.Domain.Options;
-using VemProFut.Domain.Token;
 
 namespace VemProFut.Infra.Token
 {
@@ -27,7 +28,7 @@ namespace VemProFut.Infra.Token
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 SigningCredentials = credentials,
-                Expires = DateTime.UtcNow.AddMinutes(5),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfigurationOption.TimeToLiveInMinutes),
                 Issuer = _jwtConfigurationOption.Issuer,
                 Audience = _jwtConfigurationOption.Audience,
                 Subject = GetSubject(user)
@@ -40,10 +41,23 @@ namespace VemProFut.Infra.Token
         private ClaimsIdentity GetSubject(UserEntity user)
         {
             var claimsIdentity = new ClaimsIdentity();
+            claimsIdentity.AddClaim(new(ClaimTypes.Name, user.Username));
 
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+            var role = GetUserRole(user);
+            claimsIdentity.AddClaim(role);
 
             return claimsIdentity;
+        }
+
+        private Claim GetUserRole(UserEntity user)
+        {
+            return user.Username switch
+            {
+                "diegodona" => new(ClaimTypes.Role, UserRolesConsts.AdminRole),
+                "john" or "daphne" => new(ClaimTypes.Role, UserRolesConsts.ReaderRole),
+                "linda" or "maria" => new(ClaimTypes.Role, UserRolesConsts.WriterRole),
+                _ => throw new UnauthorizedAccessException(nameof(user.Username))
+            };
         }
     }
 }
