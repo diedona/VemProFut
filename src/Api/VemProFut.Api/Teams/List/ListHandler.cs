@@ -6,6 +6,8 @@ namespace VemProFut.Api.Teams.List
     {
         public async Task<IEnumerable<ListResponse>> Handle(ListRequest request, CancellationToken cancellationToken)
         {
+            throw new Exception("ERRO FATAL");
+
             await Task.CompletedTask;
             return new List<ListResponse>()
             {

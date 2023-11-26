@@ -1,7 +1,5 @@
 using Carter;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Serilog;
 using VemProFut.Api;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,11 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddThirdPartyServices();
+builder.Services.AddCustomExceptionHandlers();
 builder.Services.AddCustomOptions(builder);
 builder.Services.AddDomainServices();
 builder.Services.AddCustomAuthentication(builder);
 builder.Services.AddAuthorization();
 
+builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +26,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapCarter();
 
+app.UseSerilogRequestLogging();
+app.UseExceptionHandler(_ => { }); // discard lambda due to a bug in .net 8 as of 2023/11/26
 app.UseAuthentication();
 app.UseAuthorization();
 
