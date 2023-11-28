@@ -2,7 +2,7 @@
 using VemProFut.Domain.Authentication.Token.Interfaces;
 using VemProFut.Domain.Entities;
 
-namespace VemProFut.Api.Logins.Login
+namespace VemProFut.Api.Endpoints.Authentications.Login
 {
     public class LoginHandler(
         IJwtTokenService _tokenServive

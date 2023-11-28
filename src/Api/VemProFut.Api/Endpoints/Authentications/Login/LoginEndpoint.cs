@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace VemProFut.Api.Logins.Login
+namespace VemProFut.Api.Endpoints.Authentications.Login
 {
     public class LoginEndpoint : CarterModule
     {
@@ -26,7 +26,3 @@ namespace VemProFut.Api.Logins.Login
         }
     }
 }
-
-public record LoginRequest(string Username, string Password) : IRequest<LoginResponse>;
-
-public record LoginResponse(string Token);

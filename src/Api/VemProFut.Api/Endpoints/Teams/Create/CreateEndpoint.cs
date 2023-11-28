@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using VemProFut.Domain.Authentication.Constants;
 
-namespace VemProFut.Api.Teams.Create
+namespace VemProFut.Api.Endpoints.Teams.Create
 {
     public class CreateEndpoint : CarterModule
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace VemProFut.Api.Teams.Create
+namespace VemProFut.Api.Endpoints.Teams.Create
 {
     public class CreateHandler : IRequestHandler<CreateRequest, Unit>
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace VemProFut.Api.Teams.List
+namespace VemProFut.Api.Endpoints.Teams.List
 {
     public record ListRequest() : IRequest<IEnumerable<ListResponse>>;
 }
