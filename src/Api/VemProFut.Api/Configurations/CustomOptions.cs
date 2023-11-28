@@ -6,7 +6,7 @@ namespace VemProFut.Api.Configurations
     {
         public static void AddCustomOptions(this IServiceCollection services, WebApplicationBuilder builder)
         {
-            services.Configure<JwtConfigurationOption>(builder.Configuration.GetSection(JwtConfigurationOption.FieldName));
+            services.Configure<JwtConfiguration>(builder.Configuration.GetSection(JwtConfiguration.FieldName));
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using VemProFut.Domain.Authentication.Token.Interfaces;
+using VemProFut.Domain.Authentication.Token;
 using VemProFut.Domain.Entities;
 
 namespace VemProFut.Api.Endpoints.Authentications.Login

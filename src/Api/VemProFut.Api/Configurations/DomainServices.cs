@@ -1,5 +1,6 @@
-﻿using VemProFut.Domain.Authentication.Token.Interfaces;
-using VemProFut.Infra.Token;
+﻿using VemProFut.Domain.Authentication.Services;
+using VemProFut.Domain.Authentication.Token;
+using VemProFut.Infra.Authentication.Token;
 
 namespace VemProFut.Api.Configurations
 {
@@ -8,6 +9,7 @@ namespace VemProFut.Api.Configurations
         public static void AddDomainServices(this IServiceCollection services)
         {
             services.AddScoped<IJwtTokenService, JwtTokenService>();
+            services.AddScoped<AuthenticationCustomService>();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace VemProFut.Api.Endpoints.Authentications.Login
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapPost("api/login", HandleAsync)
+                .AllowAnonymous()
                 .WithTags("login")
                 .WithDescription("do login")
                 .WithOpenApi();
