@@ -1,6 +1,7 @@
 using Carter;
 using Serilog;
 using VemProFut.Api.Configurations;
+using VemProFut.Api.Configurations.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
