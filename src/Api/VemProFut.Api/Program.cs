@@ -32,8 +32,8 @@ app.MapCarter();
 
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler(_ => { }); // discard lambda due to a bug in .net 8 as of 2023/11/26
+app.UseCustomCors(builder);
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCustomCors(builder);
 
 app.Run();
