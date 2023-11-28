@@ -1,9 +1,9 @@
 ﻿using VemProFut.Domain.Authentication.Token.Interfaces;
 using VemProFut.Infra.Token;
 
-namespace VemProFut.Api
+namespace VemProFut.Api.Configurations
 {
-    public static class ProgramDomainServices
+    public static class DomainServices
     {
         public static void AddDomainServices(this IServiceCollection services)
         {

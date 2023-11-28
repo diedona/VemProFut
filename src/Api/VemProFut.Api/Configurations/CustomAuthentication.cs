@@ -3,9 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using VemProFut.Domain.Options;
 
-namespace VemProFut.Api
+namespace VemProFut.Api.Configurations
 {
-    public static class ProgramCustomAuthentication
+    public static class CustomAuthentication
     {
         public static void AddCustomAuthentication(this IServiceCollection services, WebApplicationBuilder builder)
         {

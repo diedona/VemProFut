@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using VemProFut.Domain.Authentication.Constants;
 
-namespace VemProFut.Api
+namespace VemProFut.Api.Configurations
 {
-    public static class ProgramCustomAuthorization
+    public static class CustomAuthorization
     {
         public static void AddCustomAuthorization(this IServiceCollection services)
         {

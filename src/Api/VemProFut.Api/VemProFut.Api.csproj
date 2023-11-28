@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\Infra\VemProFut.Infra\VemProFut.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+  </ItemGroup>
+
 </Project>

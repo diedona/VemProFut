@@ -1,8 +1,8 @@
 ﻿using Carter;
 
-namespace VemProFut.Api
+namespace VemProFut.Api.Configurations
 {
-    public static class ProgramThirdPartyServices
+    public static class ThirdPartyServices
     {
         public static void AddThirdPartyServices(this IServiceCollection services)
         {

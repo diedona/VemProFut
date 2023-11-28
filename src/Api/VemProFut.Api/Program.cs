@@ -1,6 +1,6 @@
 using Carter;
 using Serilog;
-using VemProFut.Api;
+using VemProFut.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 

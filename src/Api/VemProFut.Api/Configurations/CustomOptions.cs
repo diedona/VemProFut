@@ -1,8 +1,8 @@
 ﻿using VemProFut.Domain.Options;
 
-namespace VemProFut.Api
+namespace VemProFut.Api.Configurations
 {
-    public static class ProgramCustomOptions
+    public static class CustomOptions
     {
         public static void AddCustomOptions(this IServiceCollection services, WebApplicationBuilder builder)
         {
