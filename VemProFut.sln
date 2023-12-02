@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VemProFut.Api", "src\Api\Ve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{42DAFFC7-57A0-4862-BCC5-0A0584CEB316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VemProFut.Infra", "src\Infra\VemProFut.Infra\VemProFut.Infra.csproj", "{9F7872A0-B45A-4039-9620-1B2052F60E6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VemProFut.Infra", "src\Infra\VemProFut.Infra\VemProFut.Infra.csproj", "{9F7872A0-B45A-4039-9620-1B2052F60E6B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EBC96E38-25A2-404B-AFA5-C78E985ED8CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{9F7872A0-B45A-4039-9620-1B2052F60E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F7872A0-B45A-4039-9620-1B2052F60E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F7872A0-B45A-4039-9620-1B2052F60E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC96E38-25A2-404B-AFA5-C78E985ED8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC96E38-25A2-404B-AFA5-C78E985ED8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC96E38-25A2-404B-AFA5-C78E985ED8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC96E38-25A2-404B-AFA5-C78E985ED8CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

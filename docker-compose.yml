@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  vemprofut.api:
+    image: ${DOCKER_REGISTRY-}vemprofutapi
+    container_name: webprofut.api
+    build:
+      context: .
+      dockerfile: src/Api/VemProFut.Api/Dockerfile
