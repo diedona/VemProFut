@@ -8,14 +8,14 @@ namespace VemProFut.Api.Endpoints.Teams.Create
 {
     public class CreateEndpoint : CarterModule
     {
-        private async Task<Ok> HandleAsync(
+        private async Task<NoContent> HandleAsync(
             [FromBody] CreateRequest request,
             [FromServices] ISender sender,
             CancellationToken cancellationToken
         )
         {
             await sender.Send(request, cancellationToken);
-            return TypedResults.Ok();
+            return TypedResults.NoContent();
         }
 
         public override void AddRoutes(IEndpointRouteBuilder app)
